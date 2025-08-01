@@ -1,0 +1,10 @@
+{
+    "config": "config.conf",
+    "dns": [
+        "1.1.1.1",
+        "1.0.0.1"
+    ],
+    "domains": [
+        "www.ipchicken.com"
+    ]
+}
