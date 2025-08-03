@@ -1,8 +1,14 @@
 # WireGuard VPN Split Tunnelling per Website
 
+Mac and linux support is currently in development, so not yet fully supported.
+
 ## Dependancies
 - [WireGuard](https://www.wireguard.com/install/)
 - [Node.js](https://nodejs.org/en/download) (Developed on v22.14.0)
+
+On Mac:
+
+- Run `brew install wireguard-tools` in the terminal.
 
 ## Install
 

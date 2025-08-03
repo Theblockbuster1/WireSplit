@@ -4,6 +4,7 @@ import dns from 'dns';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs/promises';
+import settings from './settings.json' with { type: 'json' };
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -89,7 +90,7 @@ export async function getAddressesDNS(domains) {
                     return reject(err);
                 }
                 addresses.forEach(a => {
-                    addressesAll.add(a.address + (a.family === 4 ? '/32' : '/128'));
+                    if (a.family === 4 || settings.ipv6) addressesAll.add(a.address + (a.family === 4 ? '/32' : '/128'));
                 });
                 resolve();
             });
