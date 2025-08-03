@@ -39,3 +39,5 @@ On Mac:
 Optionally, you can change the DNS records in `settings.json`. These are the DNS records that will be used in WireGuard. I set them to Cloudflare DNS by default.
 
 If you want to add a domain to `settings.json`, you should probably make sure its not in `custom_filter.txt`. If it is, you can remove it.
+
+This app assumes that you use a decent ad-blocker, because by default it doesn't VPN ad domains.
