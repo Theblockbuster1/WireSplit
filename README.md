@@ -3,7 +3,7 @@
 Mac and linux support is currently in development, so not yet fully supported.
 
 ## Dependancies
-- [WireGuard](https://www.wireguard.com/install/)
+- [WireGuard](https://www.wireguard.com/install/) [module & tools]
 - [Node.js](https://nodejs.org/en/download) (Developed on v22.14.0)
 
 On Mac:

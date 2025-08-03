@@ -9,6 +9,7 @@ import settings from './settings.json' with { type: 'json' };
 import { getAddresses } from './domains.js';
 import readline from 'node:readline';
 import { exit } from 'node:process';
+import os from 'node:os';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -17,6 +18,14 @@ const filePath = path.join(__dirname, '/configs', `/${settings.config}`);
 const outputFileName = 'WireSplit.conf';
 const genConfigDir = path.join(__dirname, '/generatedconfig');
 const outputPath = path.join(genConfigDir, outputFileName);
+
+let installCommand = `sudo wg-quick up ${WireSplit.conf}`;
+let uninstallCommand = `sudo wg-quick down ${WireSplit.conf}`;
+
+if (os.type() == "Windows_NT") {
+    installCommand = "wireguard /uninstalltunnelservice WireSplit";
+    uninstallCommand = `wireguard /installtunnelservice "${outputPath}"`;
+}
 
 
 (async function() {
@@ -41,7 +50,7 @@ const outputPath = path.join(genConfigDir, outputFileName);
     console.log("Checking if WireSplit is already up...");
     if (await checkConfig()) {
         console.log("WireSplit found, uninstalling service...");
-        exec("wireguard /uninstalltunnelservice WireSplit", { cwd: genConfigDir }, function (_error, _stdout, stderr) {
+        exec(uninstallCommand, { cwd: genConfigDir }, function (_error, _stdout, stderr) {
             if (stderr) {
                 console.error("Error uninstalling WireSplit service, maybe turn off WireGuard? Error below:");
                 console.error(stderr);
@@ -68,7 +77,7 @@ const outputPath = path.join(genConfigDir, outputFileName);
     }
 
     console.log("Installing service...");
-    exec(`wireguard /installtunnelservice "${outputPath}"`, { cwd: genConfigDir }, function (_error, _stdout, stderr) {
+    exec(installCommand, { cwd: genConfigDir }, function (_error, _stdout, stderr) {
         if (stderr) {
             console.error("Error installing WireSplit service, maybe turn off WireGuard? Error below:");
             console.error(stderr);
