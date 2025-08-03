@@ -9,3 +9,7 @@ node_modules/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+.gitignore
+settings.json
+custom_filter.txt
