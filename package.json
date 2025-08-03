@@ -9,7 +9,6 @@
   "license": "MIT",
   "type": "module",
   "dependencies": {
-    "ping": "^0.4.4",
     "wireguard-tools": "^0.1.0"
   },
   "devDependencies": {

@@ -1,6 +1,5 @@
 import fetch from 'node-fetch';
 import { firefox } from 'playwright';
-import ping from 'ping';
 import dns from 'dns';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -79,10 +78,6 @@ export function filterDomains(domains, blockedDomains) {
         domains.delete(domain);
     });
     return domains;
-}
-
-export async function getAddressesPing(domains) {
-    return Promise.all(Array.from(domains).map(async domain => (await ping.promise.probe(domain)).numeric_host));
 }
 
 export async function getAddressesDNS(domains) {

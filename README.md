@@ -1,9 +1,7 @@
 # WireGuard VPN Split Tunnelling per Website
 
-Currently only supports Windows.
-
 ## Dependancies
-- [WireSock Client](https://www.wiresock.net/wiresock-secure-connect/download) (only available on Windows)
+- [WireGuard](https://www.wireguard.com/install/)
 - [Node.js](https://nodejs.org/en/download) (Developed on v22.14.0)
 
 ## Install
