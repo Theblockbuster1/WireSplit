@@ -8,7 +8,7 @@
 
 1. Clone the repository to your computer
 2. Run `npm i` in the repo's directory
-3. I actually don't know if that should install headless Firefox for you, so if it doesn't, also run `npx playwright install --with-deps --only-shell`
+3. Run `npx playwright install firefox --with-deps --only-shell` (to install headless Firefox, for getting website addresses)
 
 ## Setup
 
