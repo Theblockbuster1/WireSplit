@@ -16,7 +16,6 @@
 2. In `settings.json`:
     1. Set the `config` value to the file name of the `.conf` file.
     2. Add as many `domains` as you'd like of the websites you'd like to be tunnelled.
-    3. Optionally, change the DNS records. These are the DNS records that will be used in WireGuard. I set them to Cloudflare DNS by default.
 
 ## Usage
 
@@ -27,3 +26,10 @@
 
 - GUI
 - Caching website's addresses
+
+
+## Notes
+
+Optionally, you can change the DNS records in `settings.json`. These are the DNS records that will be used in WireGuard. I set them to Cloudflare DNS by default.
+
+If you want to add a domain to `settings.json`, you should probably make sure its not in `custom_filter.txt`. If it is, you can remove it.
