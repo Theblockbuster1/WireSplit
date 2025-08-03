@@ -19,8 +19,8 @@ const outputFileName = 'WireSplit.conf';
 const genConfigDir = path.join(__dirname, '/generatedconfig');
 const outputPath = path.join(genConfigDir, outputFileName);
 
-let installCommand = `sudo wg-quick up ${outputFileName}`;
-let uninstallCommand = `sudo wg-quick down ${outputFileName}`;
+let installCommand = `sudo wg-quick up ./${outputFileName}`;
+let uninstallCommand = `sudo wg-quick down ./${outputFileName}`;
 
 if (os.type() == "Windows_NT") {
     installCommand = "wireguard /uninstalltunnelservice WireSplit";
