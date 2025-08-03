@@ -23,8 +23,8 @@ let installCommand = `sudo wg-quick up ./${outputFileName}`;
 let uninstallCommand = `sudo wg-quick down ./${outputFileName}`;
 
 if (os.type() == "Windows_NT") {
-    installCommand = "wireguard /uninstalltunnelservice WireSplit";
-    uninstallCommand = `wireguard /installtunnelservice "${outputPath}"`;
+    installCommand = `wireguard /installtunnelservice "${outputPath}"`;
+    uninstallCommand = "wireguard /uninstalltunnelservice WireSplit";
 }
 
 
