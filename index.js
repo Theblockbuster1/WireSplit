@@ -54,7 +54,7 @@ const outputPath = path.join(genConfigDir, outputFileName);
         });
 
         await new Promise(resolve => {
-            rl.question("Would you like to try to continue and install the service, despite the error? Personally, I don't think it'll work. (y/N): ", input => {
+            rl.question("Would you like to try to continue and install the service, despite the error? Personally, I don't think it'll work. [y/N]: ", input => {
                 switch(input.toLowerCase()) {
                     case "y":
                         break;

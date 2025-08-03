@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+import axios from 'axios';
 import { firefox } from 'playwright';
 import dns from 'dns';
 import path from 'path';
@@ -63,9 +63,8 @@ export async function getDomains(domain, defaulttimeout=5000) {
 }
 
 export async function getBlockedDomains(url='https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts') {
-    let res = await fetch(url);
-    let data = await res.text();
-    return data.split(/\r?\n/).filter(line => line.startsWith('0.0.0.0') && !line.endsWith('0.0.0.0')).map(line => line.split(' ')[1]);
+    let res = await axios.get(url);
+    return res.data.split(/\r?\n/).filter(line => line.startsWith('0.0.0.0') && !line.endsWith('0.0.0.0')).map(line => line.split(' ')[1]);
 }
 
 export async function getCustomBlockedDomains(filename='custom_filter.txt') {
