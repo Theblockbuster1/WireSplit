@@ -1,10 +1,11 @@
 # WireGuard VPN Split Tunnelling per Website
 
-Mac and linux support is currently in development, so not yet fully supported.
+Mac support is currently in development, so not yet fully supported.
 
 ## Dependancies
 - [WireGuard](https://www.wireguard.com/install/) [module & tools]
 - [Node.js](https://nodejs.org/en/download) (Developed on v22.14.0)
+- Administrator/Elevated Permissions on your computer
 
 On Mac:
 
@@ -25,7 +26,15 @@ On Mac:
 
 ## Usage
 
-1. Run `node .`!
+### Start:
+
+Run `node .` from an elevated terminal!
+
+### To take down the VPN:
+
+Windows: `wireguard /uninstalltunnelservice WireSplit` from an elevated terminal!
+
+Linux / MacOS: `sudo wg-quick down ./generatedconfig/WireSplit.conf`
 
 
 ## To-Do
