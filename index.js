@@ -1,6 +1,7 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
+import fsp from 'fs/promises';
 import { promisify } from 'node:util';
 import { exec } from 'node:child_process';
 const execAsync = promisify(exec);
@@ -102,5 +103,12 @@ async function getAddressesFromDomains(domains) {
 }
 
 async function checkConfig(conf = 'WireSplit') {
-    return await execAsync(`wg showconf ${conf}`).then(() => true).catch(() => false);
+    return await execAsync(`wg showconf ${conf}`).then(() => true).catch(async () => {
+        if (os.type() == "Windows_NT") {
+            return false;
+        } else {
+            let interfaceName = await fsp.readFile("/var/run/wireguard/WireSplit.name", 'utf8').catch(() => false);
+            return interfaceName ? await execAsync(`wg showconf ${interfaceName}`).then(() => true).catch(() => false) : false;
+        }
+    });
 }
